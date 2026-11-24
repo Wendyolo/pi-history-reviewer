@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>π Pi History Reviewer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css"
+        onerror="this.remove()" />
+</head>
+<body>
+  <header id="topbar">
+    <div class="brand" title="Pi History Reviewer"><span class="logo">π</span><span class="brand-name">History Reviewer</span></div>
+    <div class="top-search">
+      <input id="sessionSearch" type="search" placeholder="搜索会话…（名称 / 目录 / 首条消息）" />
+    </div>
+    <div class="top-actions">
+      <button id="refreshBtn" class="btn" title="立即刷新">⟳</button>
+      <button id="statsBtn" class="btn" title="用量统计">📊 统计</button>
+      <button id="treeBtn" class="btn hidden" title="查看会话树">🌳 树</button>
+      <button id="exportBtn" class="btn hidden" title="导出当前视图为独立 HTML">⬇ HTML</button>
+      <button id="exportMdBtn" class="btn hidden" title="导出为 Markdown 摘要">⬇ MD</button>
+      <label class="auto-label" title="会话有更新时自动刷新视图"><input type="checkbox" id="autoRefreshChk"> 自动刷新</label>
+    </div>
+  </header>
+
+  <div id="layout">
+    <aside id="sidebar">
+      <div class="sidebar-head">
+        <select id="sortSelect" class="proj-select" title="排序方式">
+          <option value="time-desc">时间 ↓</option>
+          <option value="time-asc">时间 ↑</option>
+          <option value="cost-desc">费用 ↓</option>
+        </select>
+        <span id="sessionCount"></span>
+      </div>
+      <div id="sessionList"></div>
+    </aside>
+
+    <main id="main">
+      <div id="welcome">
+        <div class="welcome-inner">
+          <h1>π Pi History Reviewer</h1>
+          <p>本地 pi 会话历史可视化审查器。选择一个会话开始浏览。</p>
+          <p class="dim">数据完全在本地解析，不联网上传（仅高亮/渲染库走 CDN，断网时自动降级）。</p>
+        </div>
+      </div>
+      <div id="viewToolbar" class="view-toolbar hidden">
+        <div class="find-wrap">
+          <span class="find-icon">🔍</span>
+          <input id="findInput" type="search" placeholder="查找消息 / 工具 / 命令…" />
+        </div>
+        <span id="findCount" class="find-count"></span>
+        <span class="toolbar-sep"></span>
+        <label class="toolbar-item"><input type="checkbox" id="errorsOnlyChk"> 仅看错误</label>
+        <select id="roleFilter" class="toolbar-select" title="按角色过滤">
+          <option value="">角色</option>
+          <option value="user">用户</option>
+          <option value="assistant">助手</option>
+          <option value="tool">工具</option>
+        </select>
+        <select id="toolFilter" class="toolbar-select" title="按工具名过滤">
+          <option value="">工具</option>
+        </select>
+        <button id="toggleThinkingBtn" class="btn small" title="折叠 / 展开全部 Thinking">🧠</button>
+        <button id="toggleResultsBtn" class="btn small" title="折叠 / 展开全部工具结果">📦</button>
+      </div>
+      <div id="updatePill" class="update-pill hidden">🔄 会话已更新<span id="updatePillCount"></span> · 点击刷新</div>
+      <div id="conversation" class="hidden"></div>
+    </main>
+
+    <aside id="treePanel" class="hidden">
+      <div class="tree-head">
+        <span>会话树</span>
+        <button id="treeClose" class="btn small">✕</button>
+      </div>
+      <div id="treeBody"></div>
+    </aside>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <div id="statsOverlay" class="overlay hidden">
+    <div class="overlay-box">
+      <div class="overlay-head">
+        <span>📊 用量统计</span>
+        <button id="statsClose" class="btn small">✕</button>
+      </div>
+      <div class="overlay-body" id="statsBody"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
