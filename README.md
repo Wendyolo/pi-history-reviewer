@@ -33,6 +33,15 @@ node server.js --token=<随机串>         # 开启 token 认证（保护 /api�
 
 ## 用法二：Pi 扩展（`/viz`）
 
+### 一键安装（pi package）
+
+```bash
+pi install git:github.com/Wendyolo/pi-history-reviewer
+# 或 npm（若已发布）：pi install npm:pi-history-reviewer
+```
+
+### 手动安装
+
 把本仓库放到 `~/.pi/agent/extensions/viz/`（Windows 为 `C:\Users\<你>\.pi\agent\extensions\viz\`），或在 pi 里 `/reload` 热加载后：
 
 | 命令 | 作用 |
@@ -66,3 +75,11 @@ pi -r                        # 交互式浏览选择历史会话
 - 会话数据只在本机解析，不上传任何内容；Markdown/高亮走 CDN，断网时自动降级。
 - 重命名映射存于浏览器 `localStorage`，绝不修改原始 JSONL。
 - 静态导出的 HTML 是快照，重新导出才会更新；服务器模式实时读盘。
+
+## 参与贡献
+
+见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+## License
+
+[Apache-2.0](LICENSE)

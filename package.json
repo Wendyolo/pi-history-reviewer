@@ -1,0 +1,11 @@
+{
+  "name": "pi-history-reviewer",
+  "version": "1.0.0",
+  "description": "本地 Web 版 pi 会话历史可视化审查器：/viz 扩展 + 独立服务器（零依赖）",
+  "license": "Apache-2.0",
+  "keywords": ["pi-package", "pi", "history", "reviewer", "visualization", "session"],
+  "files": ["index.ts", "server.js", "public/", "README.md"],
+  "pi": {
+    "extensions": ["./index.ts"]
+  }
+}
