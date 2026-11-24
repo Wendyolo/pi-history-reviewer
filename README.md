@@ -1,8 +1,17 @@
 # π Pi History Reviewer
 
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+![Version](https://img.shields.io/badge/version-1.0.0-3b82f6)
+![Pi Package](https://img.shields.io/badge/pi-package-16a34a)
+
 本地 Web 版 **pi 会话历史可视化审查器**（类似 Claude Code 的 history reviewer）。同时提供**独立运行**与 **Pi 扩展（`/viz`）**两种用法，同一套代码。
 
 扫描 `~/.pi/agent/sessions/` 下的会话 JSONL，在浏览器里以时间线形式渲染对话。
+
+## 截图
+
+<!-- 占位：运行后截图放到 docs/screenshot.png，取消下面注释即可显示 -->
+<!-- ![Pi History Reviewer 截图](docs/screenshot.png) -->
 
 ## 功能
 
